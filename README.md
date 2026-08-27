@@ -1,56 +1,106 @@
-# Welcome to your Expo app 👋
+# RacketTrack
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A padel score tracker for casual friend-group sessions, built for Android with Expo and Supabase.
+One phone acts as the scoreboard: two large tap zones, one per team, real padel rules underneath
+(15/30/40, deuce, golden point, tiebreak), and a "hype ticker" that lights up at match-defining
+moments.
 
-## Get started
+<p align="center">
+  <img src="docs/screenshots/home.png" width="260" alt="Home screen — session ladder and start match" />
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/live-game-point.png" width="260" alt="Live scoreboard mid-match, GAME POINT ticker lit" />
+</p>
 
-1. Install dependencies
+## Why this project exists
 
-   ```bash
-   npm install
-   ```
+I wanted to actually use something I built, not just add another CRUD app to a portfolio — and I
+wanted to get genuinely good at working with AI coding tools while doing it, not just prompt-and-paste.
+So the real brief here was two projects at once: a padel app for my own friend group, and a deliberate
+exercise in **spec-driven, AI-assisted development** — writing a detailed engineering handoff up
+front (see [`docs/design-handoff/`](docs/design-handoff/)), then working with
+[Claude Code](https://claude.com/claude-code) through the actual build: reviewing every architectural
+decision, testing on a real Android emulator rather than trusting green tests, and tracking down bugs
+that only showed up once the app was actually running.
 
-2. Start the app
+[`CLAUDE.md`](CLAUDE.md) is the standing instructions the agent worked from throughout, and
+[`HANDOFF.md`](HANDOFF.md) is a session-by-session log of what got built, what broke, and why —
+kept as a real record of the process rather than cleaned away. If you're evaluating how I work with
+these tools rather than just what the app does, that's the place to look.
 
-   ```bash
-   npx expo start
-   ```
+## Status: work in progress
 
-In the output, you'll find options to open the app in a
+Built and running on a local Android emulator — not yet shipped anywhere.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+| Phase | State |
+|---|---|
+| Scoring engine (padel rules, pure & fully tested) | ✅ Done |
+| Live scoreboard, hype ticker, haptics, undo | ✅ Done |
+| Local match history, session ladder, recap | ✅ Done |
+| Auth (Google + magic link), squads, roster sync | 🟡 Built, sign-in not yet completed on a real account |
+| Push notifications, accessibility pass, release build | ⬜ Not started |
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+44 automated tests passing, `tsc --noEmit` clean. Full detail on what's verified versus what's still
+blocked is in [`HANDOFF.md`](HANDOFF.md).
 
-## Get a fresh project
+## What it does
 
-When you're ready, run:
+- Real padel scoring: 15/30/40, deuce, golden point (toggleable), sets, tiebreak — as a pure,
+  100%-branch-tested rules engine, not UI-driven state.
+- A live scoreboard built for a court, not a phone in your hand: two giant tap zones, haptic feedback
+  scaled to what the point was worth, and a status ticker that calls out game/set/match point.
+- Fully offline-first — score a whole match in airplane mode. Matches sync to a squad automatically
+  once you're signed in and one exists; guest mode works with no account at all.
+- Squads with shareable invite codes, a shared roster, and a session ladder ranked by wins.
 
-```bash
-npm run reset-project
+## How it's built
+
+**Client:** React Native (Expo SDK 57, managed workflow + dev client), TypeScript strict, Expo Router,
+Zustand + MMKV for local state, TanStack Query for server state, Reanimated 3 for motion.
+**Backend:** Supabase — Postgres, Auth, Row-Level Security as the entire authorization layer, one
+Postgres function that lands a whole match atomically.
+
+The one architectural decision everything else follows from: **a match is a list of point winners,
+not a mutable score.** `timeline: TeamIndex[]` is the only durable data; score, games, sets, and who's
+serving are all *derived* by replaying that list through a pure function
+(`src/features/scoring/engine.ts`). That single choice is what makes undo trivial, sync idempotent,
+and the whole engine testable without rendering anything.
+
+## Project structure
+
+```
+app/                  Expo Router routes — screens only, no business logic
+src/features/         scoring engine, live match store, auth, squads — by domain
+src/components/       shared UI (tap zones, ticker, buttons, list rows)
+src/lib/              storage, Supabase client, offline outbox, local archive
+src/theme/            design tokens — every colour, size, and motion timing
+supabase/migrations/  the full Postgres schema, RLS policies, and RPCs
+docs/design-handoff/  the original engineering spec this was built from
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Running it
 
-### Other setup steps
+```bash
+npm install
+cp .env.example .env        # fill in a Supabase project URL/anon key to enable auth+sync (optional)
+npx expo run:android         # compiles locally, installs on a connected device or emulator
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Expo Go will **not** work — this app uses native modules (MMKV, Google Sign-In) that require a dev
+client build. `docs/design-handoff/00-START-HERE.md` has full environment setup if you're starting
+from scratch.
 
-## Learn more
+```bash
+npm test              # 44 tests — the scoring engine's full rules matrix + a property test
+npm run typecheck      # tsc --noEmit
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## What's next
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Getting a real account signed in end-to-end (Google Sign-In reaches the real picker; email magic
+link works but hit Gmail's link-prescanning in testing), then phase 5 (surfacing synced squad-mates'
+matches in history) and phase 6 (push notifications, a real app icon, release signing). See
+[`HANDOFF.md`](HANDOFF.md) for the detailed next-steps list.
 
-## Join the community
+## License
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+MIT — see [`LICENSE`](LICENSE).

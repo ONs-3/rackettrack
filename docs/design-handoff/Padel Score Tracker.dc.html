@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#e8e6e1;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1f6f4a}a:hover{color:#134a31}
+*{box-sizing:border-box}
+input{font-family:inherit}
+@keyframes pop{0%{transform:scale(.72);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes rise{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes slam{0%{transform:scale(1.5) skewY(-3deg);opacity:0}55%{transform:scale(.97) skewY(-3deg);opacity:1}100%{transform:scale(1) skewY(-3deg);opacity:1}}
+@keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+@keyframes flash{0%,100%{opacity:.16}50%{opacity:.05}}
+@keyframes snap{0%{transform:translateY(8px) scale(.96);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+.dv-turn{padding:40px 44px 34px;border-bottom:1px solid rgba(0,0,0,.09)}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 22px}
+.dv-tid{font:700 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#14201c;color:#d6ff4b;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 Archivo,system-ui;color:#14201c}
+.dv-opts{display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px}
+.dv-oid{font:700 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#14201c;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:9px;font:400 11.5px/1.3 Archivo,system-ui;color:rgba(0,0,0,.55);max-width:420px}
+.dv-opt:target .dv-oid{background:#14201c;color:#d6ff4b}
+.dv-next{margin:26px 0 0;font:12px/1.6 Archivo,system-ui;color:rgba(0,0,0,.5)}
+.dv-note{max-width:760px;font:13px/1.65 Archivo,system-ui;color:rgba(0,0,0,.62);margin:0 0 26px}
+.dv-note b{color:#14201c}
+</style></helmet>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Renditions of 1a — louder hype, bolder/minimal buttons</span></div>
+<p class="dv-note">Both keep <a class="dv-oid" href="#1a">1a</a>'s engine and palette. Buttons rebuilt on the WhatsApp/Revolut pattern: one full-width solid pill per screen, sentence case, no shouty letter-spacing, hairline list rows instead of bordered cards, and a bare chevron for back — no circle, no outline. The difference is <b>how the hype lands</b>: <a class="dv-oid" href="#2a">2a</a> slams a full-bleed slab across the court and floods the leading team's side; <a class="dv-oid" href="#2b">2b</a> keeps a permanent status ticker between the zones that ignites on the big points. Each phone starts on setup — tap through to live.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a><span>Slam — hype as a skewed full-bleed slab over the court, the scoring team's whole side floods with their colour.</span></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+
+<sc-if value="{{ v2a.isSetup }}" hint-placeholder-val="{{ true }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:60px 22px 0;overflow:hidden">
+  <div onClick="{{ v2a.back }}" style="width:34px;height:34px;margin-left:-8px;display:flex;align-items:center;font-size:30px;font-weight:300;color:#F1F5F2;cursor:pointer;line-height:1">‹</div>
+  <div style="font-size:34px;font-weight:800;font-variation-settings:'wdth' 110;letter-spacing:-.03em;margin-top:10px">New match</div>
+  <div style="font-size:14px;color:#7E8C84;margin-top:6px">Padel · Court 3, Padel Ireland</div>
+
+  <div style="margin-top:26px;font-size:11px;font-weight:700;letter-spacing:.1em;color:#5F6E66">TEAMS</div>
+  <div style="margin-top:10px;border-radius:16px;background:#111A16;overflow:hidden">
+    <div style="display:flex;align-items:center;padding:0 16px">
+      <div style="width:8px;height:8px;border-radius:4px;background:#D6FF4B;margin-right:12px"></div>
+      <input onChange="{{ setA1 }}" defaultValue="Cian" style="flex:1 1 0;min-width:0;width:0;background:transparent;border:none;padding:16px 0;color:#F1F5F2;font-size:16px;font-weight:600;outline:none">
+      <input onChange="{{ setA2 }}" defaultValue="Aoife" style="flex:1 1 0;min-width:0;width:0;background:transparent;border:none;padding:16px 0;color:#F1F5F2;font-size:16px;font-weight:600;outline:none;text-align:right">
+    </div>
+    <div style="height:1px;background:#1B2620;margin-left:36px"></div>
+    <div style="display:flex;align-items:center;padding:0 16px">
+      <div style="width:8px;height:8px;border-radius:4px;background:#FF6B3D;margin-right:12px"></div>
+      <input onChange="{{ setB1 }}" defaultValue="Rob" style="flex:1 1 0;min-width:0;width:0;background:transparent;border:none;padding:16px 0;color:#F1F5F2;font-size:16px;font-weight:600;outline:none">
+      <input onChange="{{ setB2 }}" defaultValue="Sinéad" style="flex:1 1 0;min-width:0;width:0;background:transparent;border:none;padding:16px 0;color:#F1F5F2;font-size:16px;font-weight:600;outline:none;text-align:right">
+    </div>
+  </div>
+
+  <div style="margin-top:24px;font-size:11px;font-weight:700;letter-spacing:.1em;color:#5F6E66">FORMAT</div>
+  <div style="margin-top:10px;display:flex;background:#111A16;border-radius:14px;padding:4px">
+    <sc-if value="{{ isBo3 }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:1;border-radius:11px;background:#243024;color:#F1F5F2;padding:12px;text-align:center;font-size:15px;font-weight:700">Best of 3</div>
+      <div onClick="{{ setBo1 }}" style="flex:1;border-radius:11px;color:#7E8C84;padding:12px;text-align:center;font-size:15px;font-weight:600;cursor:pointer">Single set</div>
+    </sc-if>
+    <sc-if value="{{ isBo1 }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ setBo3 }}" style="flex:1;border-radius:11px;color:#7E8C84;padding:12px;text-align:center;font-size:15px;font-weight:600;cursor:pointer">Best of 3</div>
+      <div style="flex:1;border-radius:11px;background:#243024;color:#F1F5F2;padding:12px;text-align:center;font-size:15px;font-weight:700">Single set</div>
+    </sc-if>
+  </div>
+
+  <div style="margin-top:16px;border-radius:16px;background:#111A16;overflow:hidden">
+    <div onClick="{{ toggleGolden }}" style="display:flex;align-items:center;padding:16px;cursor:pointer">
+      <div style="flex:1">
+        <div style="font-size:16px;font-weight:600">Golden point</div>
+        <div style="font-size:13px;color:#7E8C84;margin-top:2px">40-40 decides the game</div>
+      </div>
+      <sc-if value="{{ goldenOn }}" hint-placeholder-val="{{ true }}">
+        <div style="width:50px;height:30px;border-radius:15px;background:#D6FF4B;display:flex;justify-content:flex-end;align-items:center;padding:3px"><div style="width:24px;height:24px;border-radius:12px;background:#0A100E"></div></div>
+      </sc-if>
+      <sc-if value="{{ goldenOff }}" hint-placeholder-val="{{ false }}">
+        <div style="width:50px;height:30px;border-radius:15px;background:#243024;display:flex;align-items:center;padding:3px"><div style="width:24px;height:24px;border-radius:12px;background:#5F6E66"></div></div>
+      </sc-if>
+    </div>
+    <div style="height:1px;background:#1B2620;margin-left:16px"></div>
+    <div style="display:flex;align-items:center;padding:16px">
+      <div style="font-size:16px;font-weight:600;flex:1">Court</div>
+      <input onChange="{{ setCourt }}" defaultValue="Court 3 · Padel Ireland" style="flex:1 1 0;min-width:0;width:0;background:transparent;border:none;color:#7E8C84;font-size:15px;font-weight:600;outline:none;text-align:right">
+    </div>
+  </div>
+
+  <div onClick="{{ v2a.start }}" style="margin-top:auto;margin-bottom:36px;border-radius:16px;background:#D6FF4B;color:#0A100E;height:58px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;cursor:pointer">Start match</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v2a.isLive }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div style="padding:58px 16px 6px;display:flex;align-items:center;gap:4px">
+    <div onClick="{{ v2a.end }}" style="width:34px;height:34px;display:flex;align-items:center;font-size:30px;font-weight:300;color:#F1F5F2;cursor:pointer;line-height:1">‹</div>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ v2a.live.court }}</div>
+      <div style="font-size:12px;color:#5F6E66;margin-top:1px">{{ v2a.live.currentLabel }} games · {{ v2a.live.timer }}</div>
+    </div>
+    <sc-if value="{{ v2a.live.canUndo }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ v2a.undo }}" style="padding:9px 14px;border-radius:11px;background:#141E19;font-size:14px;font-weight:600;color:#F1F5F2;cursor:pointer">Undo</div>
+    </sc-if>
+  </div>
+
+  <div onClick="{{ v2a.tapA }}" style="flex:1;margin:6px 12px 0;border-radius:26px;padding:22px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;position:relative;overflow:hidden;transition:background .25s;background:{{ v2a.live.aBg }}">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.1em;color:#D6FF4B">{{ v2a.live.a.name }}</div>
+      <sc-if value="{{ v2a.live.a.serving }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:3px 7px;border-radius:6px;background:#D6FF4B;color:#0A100E;font-size:9px;font-weight:800;letter-spacing:.08em">SERVE</div>
+      </sc-if>
+    </div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:4px">
+      <div key="{{ v2a.live.a.key }}" style="font-size:118px;line-height:.84;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.055em;font-variant-numeric:tabular-nums;animation:pop .22s ease-out;color:{{ v2a.live.aNum }}">{{ v2a.live.a.score }}</div>
+      <div style="text-align:right;padding-bottom:12px">
+        <div style="font-size:40px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ v2a.live.a.games }}</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#8B9A92;margin-top:3px">{{ v2a.live.a.setsLabel }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:52px;display:flex;align-items:center;justify-content:center;position:relative;z-index:3">
+    <sc-if value="{{ v2a.live.noHype }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:3px;align-items:center">
+        <sc-for list="{{ v2a.live.timeline }}" as="p" hint-placeholder-count="12">
+          <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="width:5px;height:16px;border-radius:3px;background:#D6FF4B"></div></sc-if>
+          <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="width:5px;height:16px;border-radius:3px;background:#FF6B3D"></div></sc-if>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <div onClick="{{ v2a.tapB }}" style="flex:1;margin:0 12px 28px;border-radius:26px;padding:22px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;position:relative;overflow:hidden;transition:background .25s;background:{{ v2a.live.bBg }}">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.1em;color:#FF6B3D">{{ v2a.live.b.name }}</div>
+      <sc-if value="{{ v2a.live.b.serving }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:3px 7px;border-radius:6px;background:#FF6B3D;color:#0A100E;font-size:9px;font-weight:800;letter-spacing:.08em">SERVE</div>
+      </sc-if>
+    </div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:4px">
+      <div key="{{ v2a.live.b.key }}" style="font-size:118px;line-height:.84;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.055em;font-variant-numeric:tabular-nums;animation:pop .22s ease-out;color:{{ v2a.live.bNum }}">{{ v2a.live.b.score }}</div>
+      <div style="text-align:right;padding-bottom:12px">
+        <div style="font-size:40px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ v2a.live.b.games }}</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#9A8A82;margin-top:3px">{{ v2a.live.b.setsLabel }}</div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ v2a.live.hypeA }}" hint-placeholder-val="{{ false }}">
+    <div key="{{ v2a.live.hypeKey }}" style="position:absolute;left:-14px;right:-14px;top:392px;background:#D6FF4B;color:#0A100E;transform:skewY(-3deg);animation:slam .32s cubic-bezier(.2,1.4,.4,1);padding:12px 26px;z-index:4;overflow:hidden">
+      <div style="transform:skewY(3deg);font-size:40px;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.03em;line-height:1;white-space:nowrap">{{ v2a.live.hypeText }}</div>
+      <div style="transform:skewY(3deg);font-size:11px;font-weight:800;letter-spacing:.16em;opacity:.55;margin-top:2px">{{ v2a.live.hypeOwner }}</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:sweep .7s ease-out"></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ v2a.live.hypeB }}" hint-placeholder-val="{{ false }}">
+    <div key="{{ v2a.live.hypeKey }}" style="position:absolute;left:-14px;right:-14px;top:392px;background:#FF6B3D;color:#0A100E;transform:skewY(-3deg);animation:slam .32s cubic-bezier(.2,1.4,.4,1);padding:12px 26px;z-index:4;overflow:hidden">
+      <div style="transform:skewY(3deg);font-size:40px;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.03em;line-height:1;white-space:nowrap">{{ v2a.live.hypeText }}</div>
+      <div style="transform:skewY(3deg);font-size:11px;font-weight:800;letter-spacing:.16em;opacity:.55;margin-top:2px">{{ v2a.live.hypeOwner }}</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:sweep .7s ease-out"></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ v2a.live.hypeN }}" hint-placeholder-val="{{ false }}">
+    <div key="{{ v2a.live.hypeKey }}" style="position:absolute;left:-14px;right:-14px;top:392px;background:#F1F5F2;color:#0A100E;transform:skewY(-3deg);animation:slam .32s cubic-bezier(.2,1.4,.4,1);padding:12px 26px;z-index:4;overflow:hidden">
+      <div style="transform:skewY(3deg);font-size:40px;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.03em;line-height:1;white-space:nowrap">{{ v2a.live.hypeText }}</div>
+      <div style="transform:skewY(3deg);font-size:11px;font-weight:800;letter-spacing:.16em;opacity:.55;margin-top:2px">NEXT POINT SWINGS IT</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(0,0,0,.25),transparent);animation:sweep .7s ease-out"></div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ v2a.isRecap }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:60px 22px 0;overflow:hidden">
+  <div onClick="{{ v2a.again }}" style="width:34px;height:34px;margin-left:-8px;display:flex;align-items:center;font-size:30px;font-weight:300;color:#F1F5F2;cursor:pointer;line-height:1">‹</div>
+  <div style="margin-top:20px;font-size:11px;font-weight:800;letter-spacing:.18em;color:#D6FF4B">{{ v2a.recap.headline }}</div>
+  <div style="font-size:46px;font-weight:800;font-variation-settings:'wdth' 118;letter-spacing:-.035em;line-height:1.02;margin-top:8px">{{ v2a.recap.winner }}</div>
+  <div style="font-size:38px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:18px;color:#D6FF4B">{{ v2a.recap.scoreline }}</div>
+  <div style="margin-top:24px;border-radius:16px;background:#111A16;overflow:hidden">
+    <div style="display:flex;align-items:center;padding:15px 16px"><div style="flex:1;font-size:15px;color:#8B9A92">Duration</div><div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums">{{ v2a.recap.duration }}</div></div>
+    <div style="height:1px;background:#1B2620;margin-left:16px"></div>
+    <div style="display:flex;align-items:center;padding:15px 16px"><div style="flex:1;font-size:15px;color:#8B9A92">Points played</div><div style="font-size:15px;font-weight:700;font-variant-numeric:tabular-nums">{{ v2a.recap.points }}</div></div>
+    <div style="height:1px;background:#1B2620;margin-left:16px"></div>
+    <div style="display:flex;align-items:center;padding:15px 16px"><div style="flex:1;font-size:15px;color:#8B9A92">Finish</div><div style="font-size:15px;font-weight:700">{{ v2a.recap.streakLine }}</div></div>
+  </div>
+  <div style="margin-top:22px;font-size:11px;font-weight:700;letter-spacing:.1em;color:#5F6E66">POINT BY POINT</div>
+  <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px">
+    <sc-for list="{{ v2a.recap.timeline }}" as="p" hint-placeholder-count="20">
+      <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="width:6px;height:20px;border-radius:3px;background:#D6FF4B"></div></sc-if>
+      <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="width:6px;height:20px;border-radius:3px;background:#FF6B3D"></div></sc-if>
+    </sc-for>
+  </div>
+  <div onClick="{{ v2a.again }}" style="margin-top:auto;margin-bottom:36px;border-radius:16px;background:#D6FF4B;color:#0A100E;height:58px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;cursor:pointer">Rematch</div>
+</div>
+</sc-if>
+
+</x-import>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a><span>Ticker — a permanent status strip between the zones that ignites on the big points, plus a corner flare. Calmer between points, sharper when it counts.</span></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+
+<sc-if value="{{ v2b.isSetup }}" hint-placeholder-val="{{ true }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:58px 0 0;overflow:hidden">
+  <div style="display:flex;align-items:center;padding:0 12px">
+    <div onClick="{{ v2b.back }}" style="padding:6px 8px;font-size:17px;font-weight:600;color:#D6FF4B;cursor:pointer">Cancel</div>
+    <div style="flex:1;text-align:center;font-size:17px;font-weight:700">New match</div>
+    <div style="padding:6px 8px;font-size:17px;font-weight:400;color:transparent">Cancel</div>
+  </div>
+
+  <div style="padding:22px 20px 0;overflow:auto">
+    <div style="font-size:12px;font-weight:600;color:#5F6E66;padding-left:4px">TEAM A</div>
+    <div style="margin-top:8px;border-radius:14px;background:#141E19;overflow:hidden">
+      <input onChange="{{ setA1 }}" defaultValue="Cian" style="width:100%;background:transparent;border:none;padding:15px 16px;color:#F1F5F2;font-size:16px;outline:none">
+      <div style="height:1px;background:#1E2B25;margin-left:16px"></div>
+      <input onChange="{{ setA2 }}" defaultValue="Aoife" style="width:100%;background:transparent;border:none;padding:15px 16px;color:#F1F5F2;font-size:16px;outline:none">
+    </div>
+
+    <div style="margin-top:20px;font-size:12px;font-weight:600;color:#5F6E66;padding-left:4px">TEAM B</div>
+    <div style="margin-top:8px;border-radius:14px;background:#141E19;overflow:hidden">
+      <input onChange="{{ setB1 }}" defaultValue="Rob" style="width:100%;background:transparent;border:none;padding:15px 16px;color:#F1F5F2;font-size:16px;outline:none">
+      <div style="height:1px;background:#1E2B25;margin-left:16px"></div>
+      <input onChange="{{ setB2 }}" defaultValue="Sinéad" style="width:100%;background:transparent;border:none;padding:15px 16px;color:#F1F5F2;font-size:16px;outline:none">
+    </div>
+
+    <div style="margin-top:20px;font-size:12px;font-weight:600;color:#5F6E66;padding-left:4px">RULES</div>
+    <div style="margin-top:8px;border-radius:14px;background:#141E19;overflow:hidden">
+      <div style="display:flex;align-items:center;padding:14px 16px">
+        <div style="flex:1;font-size:16px">Sets</div>
+        <div style="display:flex;background:#0F1714;border-radius:9px;padding:3px">
+          <sc-if value="{{ isBo3 }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:6px 12px;border-radius:7px;background:#D6FF4B;color:#0A100E;font-size:13px;font-weight:700">3</div>
+            <div onClick="{{ setBo1 }}" style="padding:6px 12px;border-radius:7px;color:#7E8C84;font-size:13px;font-weight:600;cursor:pointer">1</div>
+          </sc-if>
+          <sc-if value="{{ isBo1 }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ setBo3 }}" style="padding:6px 12px;border-radius:7px;color:#7E8C84;font-size:13px;font-weight:600;cursor:pointer">3</div>
+            <div style="padding:6px 12px;border-radius:7px;background:#D6FF4B;color:#0A100E;font-size:13px;font-weight:700">1</div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="height:1px;background:#1E2B25;margin-left:16px"></div>
+      <div onClick="{{ toggleGolden }}" style="display:flex;align-items:center;padding:14px 16px;cursor:pointer">
+        <div style="flex:1;font-size:16px">Golden point</div>
+        <sc-if value="{{ goldenOn }}" hint-placeholder-val="{{ true }}">
+          <div style="width:48px;height:29px;border-radius:15px;background:#D6FF4B;display:flex;justify-content:flex-end;align-items:center;padding:3px"><div style="width:23px;height:23px;border-radius:12px;background:#0A100E"></div></div>
+        </sc-if>
+        <sc-if value="{{ goldenOff }}" hint-placeholder-val="{{ false }}">
+          <div style="width:48px;height:29px;border-radius:15px;background:#243024;display:flex;align-items:center;padding:3px"><div style="width:23px;height:23px;border-radius:12px;background:#5F6E66"></div></div>
+        </sc-if>
+      </div>
+      <div style="height:1px;background:#1E2B25;margin-left:16px"></div>
+      <div style="display:flex;align-items:center;padding:14px 16px">
+        <div style="font-size:16px">Court</div>
+        <input onChange="{{ setCourt }}" defaultValue="Court 3 · Padel Ireland" style="flex:1;background:transparent;border:none;color:#7E8C84;font-size:15px;outline:none;text-align:right">
+      </div>
+    </div>
+  </div>
+
+  <div onClick="{{ v2b.start }}" style="margin:auto 20px 36px;border-radius:29px;background:#D6FF4B;color:#0A100E;height:58px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:17px;font-weight:700;cursor:pointer">Start match</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v2b.isLive }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;overflow:hidden">
+  <div style="padding:58px 12px 4px;display:flex;align-items:center">
+    <div onClick="{{ v2b.end }}" style="padding:6px 8px;font-size:17px;font-weight:600;color:#D6FF4B;cursor:pointer">Done</div>
+    <div style="flex:1;text-align:center">
+      <div style="font-size:16px;font-weight:700;font-variant-numeric:tabular-nums">{{ v2b.live.currentLabel }}</div>
+      <div style="font-size:11.5px;color:#5F6E66;margin-top:1px">{{ v2b.live.timer }} · {{ v2b.live.court }}</div>
+    </div>
+    <sc-if value="{{ v2b.live.canUndo }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ v2b.undo }}" style="padding:6px 8px;font-size:17px;font-weight:600;color:#7E8C84;cursor:pointer">Undo</div>
+    </sc-if>
+  </div>
+
+  <div onClick="{{ v2b.tapA }}" style="flex:1;margin:6px 10px 0;border-radius:22px;background:#16221D;display:flex;align-items:center;justify-content:space-between;padding:0 24px;cursor:pointer;position:relative;overflow:hidden">
+    <sc-if value="{{ v2b.live.hypeA }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:#D6FF4B;animation:flash 1.1s ease-in-out infinite"></div>
+    </sc-if>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.1em;color:#D6FF4B">{{ v2b.live.a.name }}</div>
+      <div style="font-size:13px;color:#7E8C84;margin-top:3px">{{ v2b.live.a.players }}</div>
+      <div style="margin-top:12px;display:flex;gap:5px">
+        <sc-for list="{{ v2b.live.a.gamePips }}" as="g" hint-placeholder-count="2">
+          <div style="width:9px;height:9px;border-radius:5px;background:#D6FF4B"></div>
+        </sc-for>
+        <sc-for list="{{ v2b.live.a.emptyPips }}" as="g" hint-placeholder-count="4">
+          <div style="width:9px;height:9px;border-radius:5px;background:#243024"></div>
+        </sc-for>
+      </div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#5F6E66;margin-top:9px">{{ v2b.live.a.setsLabel }}</div>
+    </div>
+    <div key="{{ v2b.live.a.key }}" style="position:relative;z-index:1;font-size:130px;line-height:.82;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.06em;font-variant-numeric:tabular-nums;animation:pop .2s ease-out;color:{{ v2b.live.aNum }}">{{ v2b.live.a.score }}</div>
+  </div>
+
+  <div style="margin:10px;border-radius:14px;height:46px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s;background:{{ v2b.live.tickerBg }}">
+    <sc-if value="{{ v2b.live.noHype }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:3px;align-items:center">
+        <sc-for list="{{ v2b.live.timeline }}" as="p" hint-placeholder-count="14">
+          <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="width:4px;height:14px;border-radius:2px;background:#D6FF4B"></div></sc-if>
+          <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="width:4px;height:14px;border-radius:2px;background:#FF6B3D"></div></sc-if>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ v2b.live.hypeN }}" hint-placeholder-val="{{ false }}">
+      <div key="{{ v2b.live.hypeKey }}" style="font-size:22px;font-weight:800;font-variation-settings:'wdth' 120;letter-spacing:.02em;color:{{ v2b.live.tickerFg }};animation:snap .22s ease-out">{{ v2b.live.tickerText }}</div>
+    </sc-if>
+    <sc-if value="{{ v2b.live.hypeA }}" hint-placeholder-val="{{ false }}">
+      <div key="{{ v2b.live.hypeKey }}" style="font-size:22px;font-weight:800;font-variation-settings:'wdth' 120;color:#0A100E;animation:snap .22s ease-out">{{ v2b.live.tickerText }}</div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:rgba(10,16,14,.5)">↑ {{ v2b.live.a.name }}</div>
+    </sc-if>
+    <sc-if value="{{ v2b.live.hypeB }}" hint-placeholder-val="{{ false }}">
+      <div key="{{ v2b.live.hypeKey }}" style="font-size:22px;font-weight:800;font-variation-settings:'wdth' 120;color:#0A100E;animation:snap .22s ease-out">{{ v2b.live.tickerText }}</div>
+      <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:rgba(10,16,14,.5)">↓ {{ v2b.live.b.name }}</div>
+    </sc-if>
+  </div>
+
+  <div onClick="{{ v2b.tapB }}" style="flex:1;margin:0 10px 28px;border-radius:22px;background:#221A16;display:flex;align-items:center;justify-content:space-between;padding:0 24px;cursor:pointer;position:relative;overflow:hidden">
+    <sc-if value="{{ v2b.live.hypeB }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:#FF6B3D;animation:flash 1.1s ease-in-out infinite"></div>
+    </sc-if>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.1em;color:#FF6B3D">{{ v2b.live.b.name }}</div>
+      <div style="font-size:13px;color:#9A8A82;margin-top:3px">{{ v2b.live.b.players }}</div>
+      <div style="margin-top:12px;display:flex;gap:5px">
+        <sc-for list="{{ v2b.live.b.gamePips }}" as="g" hint-placeholder-count="1">
+          <div style="width:9px;height:9px;border-radius:5px;background:#FF6B3D"></div>
+        </sc-for>
+        <sc-for list="{{ v2b.live.b.emptyPips }}" as="g" hint-placeholder-count="5">
+          <div style="width:9px;height:9px;border-radius:5px;background:#33241D"></div>
+        </sc-for>
+      </div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#5C4B43;margin-top:9px">{{ v2b.live.b.setsLabel }}</div>
+    </div>
+    <div key="{{ v2b.live.b.key }}" style="position:relative;z-index:1;font-size:130px;line-height:.82;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.06em;font-variant-numeric:tabular-nums;animation:pop .2s ease-out;color:{{ v2b.live.bNum }}">{{ v2b.live.b.score }}</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ v2b.isRecap }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:58px 0 0;overflow:hidden">
+  <div style="display:flex;align-items:center;padding:0 12px">
+    <div onClick="{{ v2b.again }}" style="padding:6px 8px;font-size:17px;font-weight:600;color:#D6FF4B;cursor:pointer">‹ Back</div>
+    <div style="flex:1;text-align:center;font-size:17px;font-weight:700">Full time</div>
+    <div style="padding:6px 8px;font-size:17px;color:transparent">‹ Back</div>
+  </div>
+  <div style="padding:26px 20px 0;text-align:center">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.18em;color:#5F6E66">{{ v2b.recap.headline }}</div>
+    <div style="font-size:36px;font-weight:800;font-variation-settings:'wdth' 115;letter-spacing:-.03em;margin-top:10px">{{ v2b.recap.winner }}</div>
+    <div style="display:inline-block;margin-top:16px;padding:12px 22px;border-radius:16px;background:#D6FF4B;color:#0A100E;font-size:32px;font-weight:800;font-variant-numeric:tabular-nums">{{ v2b.recap.scoreline }}</div>
+  </div>
+  <div style="padding:24px 20px 0">
+    <div style="border-radius:14px;background:#141E19;overflow:hidden">
+      <div style="display:flex;align-items:center;padding:15px 16px"><div style="flex:1;font-size:15px;color:#8B9A92">Duration</div><div style="font-size:15px;font-weight:700">{{ v2b.recap.duration }}</div></div>
+      <div style="height:1px;background:#1E2B25;margin-left:16px"></div>
+      <div style="display:flex;align-items:center;padding:15px 16px"><div style="flex:1;font-size:15px;color:#8B9A92">Points played</div><div style="font-size:15px;font-weight:700">{{ v2b.recap.points }}</div></div>
+      <div style="height:1px;background:#1E2B25;margin-left:16px"></div>
+      <div style="display:flex;align-items:center;padding:15px 16px"><div style="flex:1;font-size:15px;color:#8B9A92">Finish</div><div style="font-size:15px;font-weight:700">{{ v2b.recap.streakLine }}</div></div>
+    </div>
+    <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:4px">
+      <sc-for list="{{ v2b.recap.timeline }}" as="p" hint-placeholder-count="20">
+        <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="width:6px;height:18px;border-radius:3px;background:#D6FF4B"></div></sc-if>
+        <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="width:6px;height:18px;border-radius:3px;background:#FF6B3D"></div></sc-if>
+      </sc-for>
+    </div>
+  </div>
+  <div onClick="{{ v2b.again }}" style="margin:auto 20px 36px;border-radius:29px;background:#D6FF4B;color:#0A100E;height:58px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;cursor:pointer">Rematch</div>
+</div>
+</sc-if>
+
+</x-import>
+</div>
+
+</div>
+<p class="dv-next">Try next: "fold <a class="dv-oid" href="#2a">2a</a>'s slam into the full <a class="dv-oid" href="#1a">1a</a> flow" · "make the slab react to streaks too" · "show what the badminton ruleset switch looks like"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Padel score tracker — live scoreboard directions</span></div>
+<p class="dv-note"><b>Assumptions:</b> friend-group play, phone passed around or propped on the fence, so every scoring target is a full half-screen. <b>Rules:</b> real padel — 15/30/40, deuce, advantage, golden-point toggle, 6-game sets with tiebreak, best of 3. <b>Copy:</b> hype register ("MATCH POINT", "GOLDEN POINT"). <a class="dv-oid" href="#1a">1a</a> is the working prototype — home, setup, live, recap, history all connected. <a class="dv-oid" href="#1b">1b</a> and <a class="dv-oid" href="#1c">1c</a> are alternative live-screen layouts and visual directions, both tappable.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a><span>Floodlit — full flow. Stacked half-screen tap zones, dark court palette, lime accent. Tap Start match, score a few points, end the match.</span></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:66px 20px 0;overflow:hidden">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    <div>
+      <div style="font-size:10.5px;font-weight:700;letter-spacing:.16em;color:#7E8C84">TUESDAY SESSION · 19:30</div>
+      <div style="font-size:30px;font-weight:800;font-variation-settings:'wdth' 112;letter-spacing:-.02em;margin-top:6px">Evening, Cian</div>
+    </div>
+    <div style="width:42px;height:42px;border-radius:21px;background:#1C2823;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#D6FF4B">CD</div>
+  </div>
+
+  <div style="display:flex;gap:8px;margin-top:22px;overflow:hidden">
+    <div style="padding:8px 14px;border-radius:999px;background:#D6FF4B;color:#0A100E;font-size:11.5px;font-weight:800;letter-spacing:.06em">PADEL</div>
+    <div style="padding:8px 14px;border-radius:999px;border:1px solid #22302A;color:#5F6E66;font-size:11.5px;font-weight:700;letter-spacing:.06em">BADMINTON<span style="font-size:8px;vertical-align:super;margin-left:4px">SOON</span></div>
+    <div style="padding:8px 14px;border-radius:999px;border:1px solid #22302A;color:#5F6E66;font-size:11.5px;font-weight:700;letter-spacing:.06em">TENNIS<span style="font-size:8px;vertical-align:super;margin-left:4px">SOON</span></div>
+  </div>
+
+  <div onClick="{{ goSetup }}" style="margin-top:18px;border-radius:22px;background:#D6FF4B;color:#0A100E;padding:22px;cursor:pointer;position:relative;overflow:hidden">
+    <div style="font-size:10.5px;font-weight:800;letter-spacing:.16em;opacity:.6">COURT 3 · 60 MIN LEFT</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:10px">
+      <div style="font-size:38px;font-weight:800;font-variation-settings:'wdth' 118;letter-spacing:-.03em;line-height:.95">START<br>MATCH</div>
+      <div style="width:52px;height:52px;border-radius:26px;background:#0A100E;color:#D6FF4B;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700">→</div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;display:flex;align-items:baseline;justify-content:space-between">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.16em;color:#7E8C84">SESSION LADDER</div>
+    <div style="font-size:11px;font-weight:700;color:#D6FF4B">4 PLAYERS</div>
+  </div>
+  <div style="margin-top:10px;border-radius:18px;background:#111A16;border:1px solid #1B2620;padding:6px 14px">
+    <sc-for list="{{ ladder }}" as="row" hint-placeholder-count="4">
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #18211C">
+        <div style="width:18px;font-size:12px;font-weight:800;color:#4E5C54">{{ row.rank }}</div>
+        <div style="flex:1;font-size:15px;font-weight:700">{{ row.name }}</div>
+        <sc-if value="{{ row.hot }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#0A100E;background:#FF6B3D;padding:3px 7px;border-radius:5px">ON FIRE</div>
+        </sc-if>
+        <div style="font-size:13px;font-weight:700;color:#8B9A92;font-variant-numeric:tabular-nums">{{ row.record }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top:20px;font-size:11px;font-weight:800;letter-spacing:.16em;color:#7E8C84">LAST MATCH</div>
+  <div onClick="{{ goHistory }}" style="margin-top:10px;border-radius:16px;border:1px solid #1B2620;padding:14px;display:flex;align-items:center;gap:14px;cursor:pointer">
+    <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#0A100E;background:#D6FF4B;padding:4px 7px;border-radius:5px">WON</div>
+    <div style="flex:1">
+      <div style="font-size:14px;font-weight:700">vs Rob &amp; Sinéad</div>
+      <div style="font-size:11.5px;color:#7E8C84;margin-top:2px">Sun 23 Aug · 52 min</div>
+    </div>
+    <div style="font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.02em">6-4 3-6 7-5</div>
+  </div>
+
+  <div style="margin-top:auto;display:flex;padding:14px 0 30px;border-top:1px solid #18211C;gap:8px">
+    <div style="flex:1;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em;color:#D6FF4B">HOME</div>
+    <div onClick="{{ goHistory }}" style="flex:1;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em;color:#5F6E66;cursor:pointer">HISTORY</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSetup }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:66px 20px 0;overflow:hidden">
+  <div style="display:flex;align-items:center;gap:14px">
+    <div onClick="{{ goHome }}" style="width:36px;height:36px;border-radius:18px;border:1px solid #22302A;display:flex;align-items:center;justify-content:center;font-size:16px;color:#8B9A92;cursor:pointer">←</div>
+    <div style="font-size:22px;font-weight:800;font-variation-settings:'wdth' 112;letter-spacing:-.02em">New match</div>
+  </div>
+
+  <div style="margin-top:24px;font-size:10.5px;font-weight:800;letter-spacing:.16em;color:#7E8C84">TEAM A</div>
+  <div style="margin-top:8px;display:flex;gap:8px">
+    <input onChange="{{ setA1 }}" defaultValue="Cian" style="flex:1;background:#111A16;border:1px solid #22302A;border-radius:13px;padding:14px;color:#F1F5F2;font-size:15px;font-weight:600;outline:none">
+    <input onChange="{{ setA2 }}" defaultValue="Aoife" style="flex:1;background:#111A16;border:1px solid #22302A;border-radius:13px;padding:14px;color:#F1F5F2;font-size:15px;font-weight:600;outline:none">
+  </div>
+  <div style="margin-top:16px;font-size:10.5px;font-weight:800;letter-spacing:.16em;color:#7E8C84">TEAM B</div>
+  <div style="margin-top:8px;display:flex;gap:8px">
+    <input onChange="{{ setB1 }}" defaultValue="Rob" style="flex:1;background:#111A16;border:1px solid #22302A;border-radius:13px;padding:14px;color:#F1F5F2;font-size:15px;font-weight:600;outline:none">
+    <input onChange="{{ setB2 }}" defaultValue="Sinéad" style="flex:1;background:#111A16;border:1px solid #22302A;border-radius:13px;padding:14px;color:#F1F5F2;font-size:15px;font-weight:600;outline:none">
+  </div>
+
+  <div style="margin-top:22px;font-size:10.5px;font-weight:800;letter-spacing:.16em;color:#7E8C84">FORMAT</div>
+  <div style="margin-top:8px;display:flex;gap:8px">
+    <sc-if value="{{ isBo3 }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:1;border-radius:13px;background:#D6FF4B;color:#0A100E;padding:14px;text-align:center;font-size:13px;font-weight:800">BEST OF 3 SETS</div>
+      <div onClick="{{ setBo1 }}" style="flex:1;border-radius:13px;border:1px solid #22302A;color:#8B9A92;padding:14px;text-align:center;font-size:13px;font-weight:700;cursor:pointer">SINGLE SET</div>
+    </sc-if>
+    <sc-if value="{{ isBo1 }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ setBo3 }}" style="flex:1;border-radius:13px;border:1px solid #22302A;color:#8B9A92;padding:14px;text-align:center;font-size:13px;font-weight:700;cursor:pointer">BEST OF 3 SETS</div>
+      <div style="flex:1;border-radius:13px;background:#D6FF4B;color:#0A100E;padding:14px;text-align:center;font-size:13px;font-weight:800">SINGLE SET</div>
+    </sc-if>
+  </div>
+
+  <div onClick="{{ toggleGolden }}" style="margin-top:12px;border-radius:16px;border:1px solid #22302A;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer">
+    <div style="flex:1">
+      <div style="font-size:14.5px;font-weight:700">Golden point</div>
+      <div style="font-size:11.5px;color:#7E8C84;margin-top:3px">No advantage — 40-40 decides the game</div>
+    </div>
+    <sc-if value="{{ goldenOn }}" hint-placeholder-val="{{ true }}">
+      <div style="width:50px;height:30px;border-radius:15px;background:#D6FF4B;display:flex;justify-content:flex-end;align-items:center;padding:3px"><div style="width:24px;height:24px;border-radius:12px;background:#0A100E"></div></div>
+    </sc-if>
+    <sc-if value="{{ goldenOff }}" hint-placeholder-val="{{ false }}">
+      <div style="width:50px;height:30px;border-radius:15px;background:#22302A;display:flex;align-items:center;padding:3px"><div style="width:24px;height:24px;border-radius:12px;background:#5F6E66"></div></div>
+    </sc-if>
+  </div>
+
+  <div style="margin-top:22px;font-size:10.5px;font-weight:800;letter-spacing:.16em;color:#7E8C84">COURT</div>
+  <input onChange="{{ setCourt }}" defaultValue="Court 3 · Padel Ireland" style="margin-top:8px;background:#111A16;border:1px solid #22302A;border-radius:13px;padding:14px;color:#F1F5F2;font-size:15px;font-weight:600;outline:none">
+
+  <div onClick="{{ startMatch }}" style="margin-top:auto;margin-bottom:34px;border-radius:20px;background:#D6FF4B;color:#0A100E;padding:20px;text-align:center;font-size:19px;font-weight:800;letter-spacing:.04em;cursor:pointer">THROW OFF →</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isLive }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;overflow:hidden">
+
+  <sc-if value="{{ chromeOn }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:60px 18px 8px;display:flex;align-items:center;gap:10px">
+      <div onClick="{{ goHome }}" style="width:32px;height:32px;border-radius:16px;border:1px solid #22302A;display:flex;align-items:center;justify-content:center;font-size:14px;color:#8B9A92;cursor:pointer">←</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:700;color:#8B9A92;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ live.court }}</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#4E5C54;margin-top:2px">{{ live.formatLabel }}</div>
+      </div>
+      <div style="font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;color:#D6FF4B">{{ live.timer }}</div>
+      <div onClick="{{ toggleSpectator }}" style="padding:7px 10px;border-radius:10px;border:1px solid #22302A;font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#8B9A92;cursor:pointer">GLANCE</div>
+    </div>
+    <div style="padding:0 18px 10px;display:flex;gap:6px;align-items:center">
+      <sc-for list="{{ live.setChips }}" as="chip" hint-placeholder-count="1">
+        <div style="padding:5px 9px;border-radius:7px;background:#141E19;font-size:11.5px;font-weight:800;color:#8B9A92;font-variant-numeric:tabular-nums">{{ chip.label }}</div>
+      </sc-for>
+      <div style="padding:5px 9px;border-radius:7px;background:#1C2823;font-size:11.5px;font-weight:800;color:#D6FF4B;font-variant-numeric:tabular-nums">{{ live.currentLabel }}</div>
+      <sc-if value="{{ live.isTiebreak }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:5px 9px;border-radius:7px;background:#FF6B3D;font-size:10px;font-weight:800;letter-spacing:.08em;color:#0A100E">TIEBREAK</div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <div onClick="{{ tapA }}" style="flex:1;margin:0 12px;border-radius:24px;background:#16221D;border:1px solid #1F2C26;padding:20px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;left:0;width:5px;height:100%;background:#D6FF4B"></div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="font-size:12px;font-weight:800;letter-spacing:.12em;color:#D6FF4B">{{ live.a.name }}</div>
+      <sc-if value="{{ live.a.serving }}" hint-placeholder-val="{{ true }}">
+        <div style="width:8px;height:8px;border-radius:4px;background:#D6FF4B;animation:pulse 2s infinite"></div>
+      </sc-if>
+    </div>
+    <div style="font-size:12.5px;color:#8B9A92;margin-top:3px">{{ live.a.players }}</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:6px">
+      <div key="{{ live.a.key }}" style="font-size:104px;line-height:.86;font-weight:800;font-variation-settings:'wdth' 122;letter-spacing:-.05em;font-variant-numeric:tabular-nums;animation:pop .22s ease-out">{{ live.a.score }}</div>
+      <div style="text-align:right;padding-bottom:10px">
+        <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#4E5C54">GAMES</div>
+        <div style="font-size:34px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ live.a.games }}</div>
+        <div style="font-size:10.5px;font-weight:800;letter-spacing:.1em;color:#8B9A92;margin-top:4px">{{ live.a.setsLabel }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:10px 14px;display:flex;align-items:center;gap:8px">
+    <sc-if value="{{ live.canUndo }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ undo }}" style="padding:9px 13px;border-radius:11px;border:1px solid #22302A;font-size:11px;font-weight:800;letter-spacing:.08em;color:#8B9A92;cursor:pointer">UNDO</div>
+    </sc-if>
+    <div style="flex:1;display:flex;justify-content:center">
+      <sc-if value="{{ live.bannerA }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:8px 14px;border-radius:11px;background:#D6FF4B;color:#0A100E;font-size:12px;font-weight:800;letter-spacing:.1em;animation:rise .25s ease-out">{{ live.bannerText }}</div>
+      </sc-if>
+      <sc-if value="{{ live.bannerB }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:8px 14px;border-radius:11px;background:#FF6B3D;color:#0A100E;font-size:12px;font-weight:800;letter-spacing:.1em;animation:rise .25s ease-out">{{ live.bannerText }}</div>
+      </sc-if>
+      <sc-if value="{{ live.bannerN }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:8px 14px;border-radius:11px;border:1px solid #D6FF4B;color:#D6FF4B;font-size:12px;font-weight:800;letter-spacing:.1em;animation:rise .25s ease-out">{{ live.bannerText }}</div>
+      </sc-if>
+      <sc-if value="{{ live.noBanner }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:3px;align-items:center;height:34px">
+          <sc-for list="{{ live.timeline }}" as="p" hint-placeholder-count="10">
+            <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="width:5px;height:14px;border-radius:3px;background:#D6FF4B"></div></sc-if>
+            <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="width:5px;height:14px;border-radius:3px;background:#FF6B3D"></div></sc-if>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div onClick="{{ endMatch }}" style="padding:9px 13px;border-radius:11px;border:1px solid #22302A;font-size:11px;font-weight:800;letter-spacing:.08em;color:#8B9A92;cursor:pointer">END</div>
+  </div>
+
+  <div onClick="{{ tapB }}" style="flex:1;margin:0 12px 26px;border-radius:24px;background:#221A16;border:1px solid #2C211C;padding:20px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;left:0;width:5px;height:100%;background:#FF6B3D"></div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="font-size:12px;font-weight:800;letter-spacing:.12em;color:#FF6B3D">{{ live.b.name }}</div>
+      <sc-if value="{{ live.b.serving }}" hint-placeholder-val="{{ false }}">
+        <div style="width:8px;height:8px;border-radius:4px;background:#FF6B3D;animation:pulse 2s infinite"></div>
+      </sc-if>
+    </div>
+    <div style="font-size:12.5px;color:#9A8A82;margin-top:3px">{{ live.b.players }}</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:6px">
+      <div key="{{ live.b.key }}" style="font-size:104px;line-height:.86;font-weight:800;font-variation-settings:'wdth' 122;letter-spacing:-.05em;font-variant-numeric:tabular-nums;animation:pop .22s ease-out">{{ live.b.score }}</div>
+      <div style="text-align:right;padding-bottom:10px">
+        <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#5C4B43">GAMES</div>
+        <div style="font-size:34px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ live.b.games }}</div>
+        <div style="font-size:10.5px;font-weight:800;letter-spacing:.1em;color:#9A8A82;margin-top:4px">{{ live.b.setsLabel }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRecap }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:66px 20px 0;overflow:hidden">
+  <div style="font-size:10.5px;font-weight:800;letter-spacing:.16em;color:#7E8C84">FULL TIME · {{ live.court }}</div>
+  <div style="margin-top:16px;border-radius:24px;background:#D6FF4B;color:#0A100E;padding:24px">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.14em;opacity:.6">{{ recap.headline }}</div>
+    <div style="font-size:40px;font-weight:800;font-variation-settings:'wdth' 118;letter-spacing:-.03em;line-height:1;margin-top:8px">{{ recap.winner }}</div>
+    <div style="font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:14px;letter-spacing:.01em">{{ recap.scoreline }}</div>
+  </div>
+
+  <div style="margin-top:18px;display:flex;gap:10px">
+    <div style="flex:1;border-radius:16px;border:1px solid #1B2620;padding:14px">
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#7E8C84">DURATION</div>
+      <div style="font-size:24px;font-weight:800;margin-top:5px;font-variant-numeric:tabular-nums">{{ recap.duration }}</div>
+    </div>
+    <div style="flex:1;border-radius:16px;border:1px solid #1B2620;padding:14px">
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#7E8C84">POINTS PLAYED</div>
+      <div style="font-size:24px;font-weight:800;margin-top:5px;font-variant-numeric:tabular-nums">{{ recap.points }}</div>
+    </div>
+  </div>
+
+  <div style="margin-top:18px;font-size:10.5px;font-weight:800;letter-spacing:.16em;color:#7E8C84">POINT BY POINT</div>
+  <div style="margin-top:10px;border-radius:16px;background:#111A16;border:1px solid #1B2620;padding:16px;display:flex;flex-wrap:wrap;gap:4px">
+    <sc-for list="{{ recap.timeline }}" as="p" hint-placeholder-count="20">
+      <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="width:6px;height:18px;border-radius:3px;background:#D6FF4B"></div></sc-if>
+      <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="width:6px;height:18px;border-radius:3px;background:#FF6B3D"></div></sc-if>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ recap.hasMvp }}" hint-placeholder-val="{{ true }}">
+    <div style="margin-top:18px;border-radius:16px;border:1px dashed #2A3A32;padding:16px;display:flex;align-items:center;gap:12px">
+      <div style="width:38px;height:38px;border-radius:19px;background:#FF6B3D;color:#0A100E;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">MVP</div>
+      <div style="flex:1">
+        <div style="font-size:15px;font-weight:700">{{ recap.mvp }}</div>
+        <div style="font-size:11.5px;color:#7E8C84;margin-top:2px">{{ recap.mvpLine }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="margin-top:auto;margin-bottom:34px;display:flex;gap:10px">
+    <div onClick="{{ goHistory }}" style="flex:1;border-radius:18px;border:1px solid #22302A;padding:18px;text-align:center;font-size:14px;font-weight:800;letter-spacing:.06em;color:#8B9A92;cursor:pointer">HISTORY</div>
+    <div onClick="{{ rematch }}" style="flex:1.4;border-radius:18px;background:#D6FF4B;color:#0A100E;padding:18px;text-align:center;font-size:14px;font-weight:800;letter-spacing:.06em;cursor:pointer">REMATCH</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHistory }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#0A100E;color:#F1F5F2;display:flex;flex-direction:column;padding:66px 20px 0;overflow:hidden">
+  <div style="display:flex;align-items:center;gap:14px">
+    <div onClick="{{ goHome }}" style="width:36px;height:36px;border-radius:18px;border:1px solid #22302A;display:flex;align-items:center;justify-content:center;font-size:16px;color:#8B9A92;cursor:pointer">←</div>
+    <div style="font-size:22px;font-weight:800;font-variation-settings:'wdth' 112;letter-spacing:-.02em">Match history</div>
+  </div>
+  <div style="margin-top:16px;display:flex;gap:10px">
+    <div style="flex:1;border-radius:14px;background:#111A16;border:1px solid #1B2620;padding:12px">
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#7E8C84">RECORD</div>
+      <div style="font-size:22px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums">14-9</div>
+    </div>
+    <div style="flex:1;border-radius:14px;background:#111A16;border:1px solid #1B2620;padding:12px">
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#7E8C84">STREAK</div>
+      <div style="font-size:22px;font-weight:800;margin-top:4px;color:#D6FF4B">W3</div>
+    </div>
+    <div style="flex:1;border-radius:14px;background:#111A16;border:1px solid #1B2620;padding:12px">
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#7E8C84">COURT TIME</div>
+      <div style="font-size:22px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums">19h</div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;font-size:10.5px;font-weight:800;letter-spacing:.16em;color:#7E8C84">AUGUST</div>
+  <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;overflow:auto">
+    <sc-for list="{{ history }}" as="m" hint-placeholder-count="4">
+      <div onClick="{{ m.toggle }}" style="border-radius:18px;background:#111A16;border:1px solid #1B2620;padding:15px;cursor:pointer">
+        <div style="display:flex;align-items:center;gap:12px">
+          <sc-if value="{{ m.won }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#0A100E;background:#D6FF4B;padding:4px 7px;border-radius:5px">WON</div>
+          </sc-if>
+          <sc-if value="{{ m.lost }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#F1F5F2;background:#2C211C;padding:4px 7px;border-radius:5px">LOST</div>
+          </sc-if>
+          <sc-if value="{{ m.abandoned }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#8B9A92;border:1px solid #2A3A32;padding:3px 6px;border-radius:5px">NO RESULT</div>
+          </sc-if>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.opponents }}</div>
+            <div style="font-size:11px;color:#7E8C84;margin-top:2px">{{ m.meta }}</div>
+          </div>
+          <div style="font-size:16px;font-weight:800;font-variant-numeric:tabular-nums">{{ m.scoreline }}</div>
+        </div>
+        <sc-if value="{{ m.open }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid #1B2620;animation:rise .2s ease-out">
+            <div style="display:flex;gap:8px">
+              <sc-for list="{{ m.sets }}" as="s" hint-placeholder-count="3">
+                <div style="flex:1;border-radius:11px;background:#0D1512;padding:10px;text-align:center">
+                  <div style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#4E5C54">{{ s.label }}</div>
+                  <div style="font-size:19px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums">{{ s.score }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:12px;font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#7E8C84">POINT BY POINT</div>
+            <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:3px">
+              <sc-for list="{{ m.timeline }}" as="p" hint-placeholder-count="24">
+                <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="width:4px;height:13px;border-radius:2px;background:#D6FF4B"></div></sc-if>
+                <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="width:4px;height:13px;border-radius:2px;background:#FF6B3D"></div></sc-if>
+              </sc-for>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:18px">
+              <div>
+                <div style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#4E5C54">DURATION</div>
+                <div style="font-size:14px;font-weight:700;margin-top:3px">{{ m.duration }}</div>
+              </div>
+              <div>
+                <div style="font-size:9px;font-weight:800;letter-spacing:.12em;color:#4E5C54">COURT</div>
+                <div style="font-size:14px;font-weight:700;margin-top:3px">{{ m.court }}</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top:auto;display:flex;padding:14px 0 30px;border-top:1px solid #18211C;gap:8px">
+    <div onClick="{{ goHome }}" style="flex:1;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em;color:#5F6E66;cursor:pointer">HOME</div>
+    <div style="flex:1;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em;color:#D6FF4B">HISTORY</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isGlance }}" hint-placeholder-val="{{ false }}">
+<div style="height:874px;background:#000;color:#fff;display:flex;flex-direction:column;overflow:hidden">
+  <div onClick="{{ tapA }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:#0A100E">
+    <div style="font-size:16px;font-weight:800;letter-spacing:.18em;color:#D6FF4B">{{ live.a.name }}</div>
+    <div key="{{ live.a.key }}" style="font-size:200px;line-height:.8;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.06em;font-variant-numeric:tabular-nums;animation:pop .22s ease-out">{{ live.a.score }}</div>
+    <div style="font-size:15px;font-weight:800;letter-spacing:.12em;color:#5F6E66">GAMES {{ live.a.games }} · {{ live.a.setsLabel }}</div>
+  </div>
+  <div onClick="{{ toggleSpectator }}" style="padding:12px;text-align:center;font-size:11px;font-weight:800;letter-spacing:.16em;color:#4E5C54;background:#000;cursor:pointer">{{ live.glanceHint }}</div>
+  <div onClick="{{ tapB }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:#150F0C">
+    <div style="font-size:16px;font-weight:800;letter-spacing:.18em;color:#FF6B3D">{{ live.b.name }}</div>
+    <div key="{{ live.b.key }}" style="font-size:200px;line-height:.8;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.06em;font-variant-numeric:tabular-nums;animation:pop .22s ease-out">{{ live.b.score }}</div>
+    <div style="font-size:15px;font-weight:800;letter-spacing:.12em;color:#5C4B43">GAMES {{ live.b.games }} · {{ live.b.setsLabel }}</div>
+  </div>
+</div>
+</sc-if>
+
+</x-import>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a><span>Broadcast — monochrome, side-by-side columns with a centre serve column and a live momentum bar. Tap either column to score.</span></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:874px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;overflow:hidden">
+  <div style="padding:60px 20px 0;display:flex;align-items:center;justify-content:space-between">
+    <div style="font-size:10px;font-weight:800;letter-spacing:.18em;color:#666">PADEL · BEST OF 3</div>
+    <div style="font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;color:#E4FF57">{{ liveB.timer }}</div>
+  </div>
+  <div style="padding:14px 20px 0">
+    <div style="font-size:44px;font-weight:800;font-variation-settings:'wdth' 118;letter-spacing:-.04em;line-height:.92">{{ liveB.headline }}</div>
+    <div style="font-size:12.5px;color:#777;margin-top:6px">{{ liveB.sub }}</div>
+  </div>
+
+  <div style="display:flex;flex:1;margin-top:14px;border-top:1px solid #1E1E1E">
+    <div onClick="{{ tapB1 }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;background:#111">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.16em;color:#E4FF57">{{ liveB.a.name }}</div>
+      <div key="{{ liveB.a.key }}" style="font-size:112px;line-height:.82;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.06em;font-variant-numeric:tabular-nums;animation:pop .2s ease-out">{{ liveB.a.score }}</div>
+      <div style="display:flex;gap:5px">
+        <sc-for list="{{ liveB.a.gamePips }}" as="g" hint-placeholder-count="3">
+          <div style="width:9px;height:9px;border-radius:5px;background:#E4FF57"></div>
+        </sc-for>
+        <sc-for list="{{ liveB.a.emptyPips }}" as="g" hint-placeholder-count="3">
+          <div style="width:9px;height:9px;border-radius:5px;border:1px solid #333"></div>
+        </sc-for>
+      </div>
+      <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;color:#5A5A5A">{{ liveB.a.setsLabel }}</div>
+    </div>
+    <div style="width:56px;background:#0D0D0D;border-left:1px solid #1E1E1E;border-right:1px solid #1E1E1E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+      <div style="font-size:9px;font-weight:800;letter-spacing:.1em;color:#555;writing-mode:vertical-rl;transform:rotate(180deg)">SERVE</div>
+      <sc-if value="{{ liveB.a.serving }}" hint-placeholder-val="{{ true }}">
+        <div style="width:14px;height:14px;border-radius:7px;background:#E4FF57;box-shadow:0 0 0 6px rgba(228,255,87,.14)"></div>
+      </sc-if>
+      <sc-if value="{{ liveB.b.serving }}" hint-placeholder-val="{{ false }}">
+        <div style="width:14px;height:14px;border-radius:7px;background:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.12)"></div>
+      </sc-if>
+      <div style="font-size:9px;font-weight:800;letter-spacing:.1em;color:#555">{{ liveB.serveCount }}</div>
+    </div>
+    <div onClick="{{ tapB2 }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;background:#161616">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.16em;color:#fff">{{ liveB.b.name }}</div>
+      <div key="{{ liveB.b.key }}" style="font-size:112px;line-height:.82;font-weight:800;font-variation-settings:'wdth' 125;letter-spacing:-.06em;font-variant-numeric:tabular-nums;animation:pop .2s ease-out">{{ liveB.b.score }}</div>
+      <div style="display:flex;gap:5px">
+        <sc-for list="{{ liveB.b.gamePips }}" as="g" hint-placeholder-count="2">
+          <div style="width:9px;height:9px;border-radius:5px;background:#fff"></div>
+        </sc-for>
+        <sc-for list="{{ liveB.b.emptyPips }}" as="g" hint-placeholder-count="4">
+          <div style="width:9px;height:9px;border-radius:5px;border:1px solid #333"></div>
+        </sc-for>
+      </div>
+      <div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;color:#5A5A5A">{{ liveB.b.setsLabel }}</div>
+    </div>
+  </div>
+
+  <div style="padding:14px 20px 0;border-top:1px solid #1E1E1E">
+    <div style="display:flex;justify-content:space-between;align-items:baseline">
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.16em;color:#666">MOMENTUM</div>
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#E4FF57">{{ liveB.momentum }}</div>
+    </div>
+    <div style="margin-top:8px;display:flex;gap:3px;align-items:flex-end;height:26px">
+      <sc-for list="{{ liveB.timeline }}" as="p" hint-placeholder-count="16">
+        <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:26px;background:#E4FF57;border-radius:2px"></div></sc-if>
+        <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="flex:1;height:12px;background:#4A4A4A;border-radius:2px"></div></sc-if>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:14px 20px 30px;display:flex;gap:8px">
+    <div onClick="{{ undoB }}" style="flex:1;border-radius:12px;border:1px solid #262626;padding:14px;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em;color:#888;cursor:pointer">UNDO</div>
+    <div onClick="{{ resetB }}" style="flex:1;border-radius:12px;border:1px solid #262626;padding:14px;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em;color:#888;cursor:pointer">RESET</div>
+    <div style="flex:1.2;border-radius:12px;background:#E4FF57;color:#0D0D0D;padding:14px;text-align:center;font-size:11px;font-weight:800;letter-spacing:.1em">END SET</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a><span>Clay — light editorial direction. Horizontal team rows, oversized outline numerals, a running scorecard grid like a paper match sheet. Tap a row to score.</span></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:874px;background:#F4F1E9;color:#1A1815;display:flex;flex-direction:column;overflow:hidden">
+  <div style="padding:60px 22px 0;display:flex;align-items:flex-start;justify-content:space-between">
+    <div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:.2em;color:#A08F7E">MATCH SHEET · PADEL</div>
+      <div style="font-size:26px;font-weight:800;font-variation-settings:'wdth' 108;letter-spacing:-.02em;margin-top:5px">Court 3, Thursday</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:9.5px;font-weight:800;letter-spacing:.14em;color:#A08F7E">ELAPSED</div>
+      <div style="font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;color:#C4562F">{{ liveC.timer }}</div>
+    </div>
+  </div>
+
+  <div style="margin:18px 22px 0;border-top:1.5px solid #1A1815;border-bottom:1.5px solid #1A1815">
+    <div style="display:flex;padding:8px 0;font-size:9.5px;font-weight:800;letter-spacing:.12em;color:#A08F7E;border-bottom:1px solid #DED7C9">
+      <div style="flex:1">TEAM</div>
+      <div style="width:34px;text-align:center">S1</div>
+      <div style="width:34px;text-align:center">S2</div>
+      <div style="width:34px;text-align:center">S3</div>
+      <div style="width:44px;text-align:center">GAME</div>
+    </div>
+    <div onClick="{{ tapC1 }}" style="display:flex;align-items:center;padding:14px 0;border-bottom:1px solid #DED7C9;cursor:pointer">
+      <div style="flex:1;display:flex;align-items:center;gap:8px">
+        <div style="width:4px;height:26px;background:#C4562F;border-radius:2px"></div>
+        <div>
+          <div style="font-size:15px;font-weight:800">{{ liveC.a.name }}</div>
+          <div style="font-size:11px;color:#8A7A6A;margin-top:1px">{{ liveC.a.players }}</div>
+        </div>
+        <sc-if value="{{ liveC.a.serving }}" hint-placeholder-val="{{ true }}">
+          <div style="width:7px;height:7px;border-radius:4px;background:#C4562F"></div>
+        </sc-if>
+      </div>
+      <sc-for list="{{ liveC.a.setCells }}" as="c" hint-placeholder-count="3">
+        <div style="width:34px;text-align:center;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;color:#5B5449">{{ c.v }}</div>
+      </sc-for>
+      <div key="{{ liveC.a.key }}" style="width:44px;text-align:center;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;animation:pop .2s ease-out">{{ liveC.a.score }}</div>
+    </div>
+    <div onClick="{{ tapC2 }}" style="display:flex;align-items:center;padding:14px 0;cursor:pointer">
+      <div style="flex:1;display:flex;align-items:center;gap:8px">
+        <div style="width:4px;height:26px;background:#2C5AA0;border-radius:2px"></div>
+        <div>
+          <div style="font-size:15px;font-weight:800">{{ liveC.b.name }}</div>
+          <div style="font-size:11px;color:#8A7A6A;margin-top:1px">{{ liveC.b.players }}</div>
+        </div>
+        <sc-if value="{{ liveC.b.serving }}" hint-placeholder-val="{{ false }}">
+          <div style="width:7px;height:7px;border-radius:4px;background:#2C5AA0"></div>
+        </sc-if>
+      </div>
+      <sc-for list="{{ liveC.b.setCells }}" as="c" hint-placeholder-count="3">
+        <div style="width:34px;text-align:center;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;color:#5B5449">{{ c.v }}</div>
+      </sc-for>
+      <div key="{{ liveC.b.key }}" style="width:44px;text-align:center;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;animation:pop .2s ease-out">{{ liveC.b.score }}</div>
+    </div>
+  </div>
+
+  <div style="flex:1;margin:0 22px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative">
+    <div style="font-size:10px;font-weight:800;letter-spacing:.2em;color:#A08F7E">{{ liveC.state }}</div>
+    <div key="{{ liveC.bigKey }}" style="font-size:150px;line-height:.84;font-weight:800;font-variation-settings:'wdth' 120;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:2px #1A1815;font-variant-numeric:tabular-nums;animation:pop .25s ease-out">{{ liveC.big }}</div>
+    <div style="font-size:13px;font-weight:700;color:#8A7A6A;text-align:center;max-width:250px;text-wrap:pretty">{{ liveC.caption }}</div>
+  </div>
+
+  <div style="margin:0 22px;padding:14px 0;border-top:1px solid #DED7C9;display:flex;gap:3px;align-items:flex-end;height:44px">
+    <sc-for list="{{ liveC.timeline }}" as="p" hint-placeholder-count="18">
+      <sc-if value="{{ p.isA }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:20px;background:#C4562F;border-radius:2px"></div></sc-if>
+      <sc-if value="{{ p.isB }}" hint-placeholder-val="{{ false }}"><div style="flex:1;height:20px;background:#2C5AA0;border-radius:2px"></div></sc-if>
+    </sc-for>
+  </div>
+
+  <div style="padding:6px 22px 32px;display:flex;gap:10px">
+    <div onClick="{{ undoC }}" style="flex:1;border-radius:14px;border:1.5px solid #1A1815;padding:15px;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.1em;cursor:pointer">UNDO POINT</div>
+    <div onClick="{{ resetC }}" style="flex:1;border-radius:14px;background:#1A1815;color:#F4F1E9;padding:15px;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.1em;cursor:pointer">NEW GAME</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+<p class="dv-next">Try next: "build out <a class="dv-oid" href="#1b">1b</a>'s momentum bar into <a class="dv-oid" href="#1a">1a</a>" · "make <a class="dv-oid" href="#1c">1c</a> the full flow instead" · "add a squad leaderboard screen" · "show the badminton ruleset switch"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;goldenPoint&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Rules&quot;},&quot;bestOf&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;3&quot;,&quot;1&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Rules&quot;},&quot;hypeCopy&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Copy&quot;}}">
+const PT = ['0', '15', '30', '40', 'AD'];
+
+function clone(m) { return JSON.parse(JSON.stringify(m)); }
+
+function newMatch(opts) {
+  return {
+    a: { name: 'TEAM A', players: (opts.a || ['Cian', 'Aoife']).join(' · ') },
+    b: { name: 'TEAM B', players: (opts.b || ['Rob', 'Sinéad']).join(' · ') },
+    golden: opts.golden !== false,
+    bestOf: opts.bestOf || 3,
+    court: opts.court || 'Court 3 · Padel Ireland',
+    points: [0, 0], games: [0, 0], sets: [], setsWon: [0, 0],
+    tiebreak: false, serving: 0, timeline: [], total: 0,
+    startedAt: Date.now(), over: false, winner: null, elapsed: 0
+  };
+}
+
+function winsGame(m, t) {
+  const o = 1 - t, p = m.points;
+  if (m.tiebreak) return p[t] + 1 >= 7 && p[t] + 1 - p[o] >= 2;
+  if (p[t] === 4) return true;
+  if (p[t] === 3) { if (p[o] < 3) return true; if (m.golden && p[o] === 3) return true; }
+  return false;
+}
+function winsSet(m, t) {
+  if (!winsGame(m, t)) return false;
+  if (m.tiebreak) return true;
+  const g = m.games[t] + 1, o = m.games[1 - t];
+  return g >= 6 && g - o >= 2;
+}
+function winsMatch(m, t) {
+  return winsSet(m, t) && m.setsWon[t] + 1 >= (m.bestOf === 1 ? 1 : 2);
+}
+
+function score(m0, t) {
+  const m = clone(m0), o = 1 - t;
+  if (m.over) return m;
+  const gameWon = winsGame(m, t), setWon = winsSet(m, t), matchWon = winsMatch(m, t);
+  m.timeline.push(t); m.total++;
+  if (gameWon) {
+    if (setWon) {
+      const ga = m.games.slice(); ga[t] += 1;
+      m.sets.push({ a: ga[0], b: ga[1], tb: m.tiebreak });
+      m.setsWon[t] += 1;
+      m.games = [0, 0]; m.points = [0, 0]; m.tiebreak = false;
+      if (matchWon) { m.over = true; m.winner = t; m.finishedAt = Date.now(); }
+    } else {
+      m.games[t] += 1; m.points = [0, 0];
+      if (m.games[0] === 6 && m.games[1] === 6) m.tiebreak = true;
+    }
+    m.serving = 1 - m.serving;
+  } else if (m.tiebreak) {
+    m.points[t] += 1;
+    if ((m.points[0] + m.points[1]) % 2 === 1) m.serving = 1 - m.serving;
+  } else {
+    const p = m.points;
+    if (p[t] === 3 && p[o] === 4) p[o] = 3;
+    else if (p[t] === 3 && p[o] === 3) p[t] = 4;
+    else p[t] += 1;
+  }
+  return m;
+}
+
+function label(m, t) {
+  if (m.tiebreak) return String(m.points[t]);
+  return PT[m.points[t]];
+}
+function situation(m) {
+  if (m.over) return null;
+  if (m.tiebreak && m.points[0] >= 5 && m.points[1] >= 5) return { t: null, text: 'TIEBREAK — TIGHT' };
+  if (m.golden && !m.tiebreak && m.points[0] === 3 && m.points[1] === 3) return { t: null, text: 'GOLDEN POINT' };
+  for (const t of [0, 1]) {
+    if (winsMatch(m, t)) return { t, text: 'MATCH POINT' };
+    if (winsSet(m, t)) return { t, text: 'SET POINT' };
+    if (winsGame(m, t)) return { t, text: 'GAME POINT' };
+  }
+  if (!m.tiebreak && m.points[0] === 3 && m.points[1] === 3) return { t: null, text: 'DEUCE' };
+  const last = m.timeline.slice(-4);
+  if (last.length === 4 && last.every(x => x === last[0])) return { t: last[0], text: '4 IN A ROW' };
+  return null;
+}
+function fmtTime(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
+  return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+}
+function pips(n) { return Array.from({ length: Math.max(0, n) }, (_, i) => i); }
+
+const HISTORY = [
+  { won: true, opponents: 'vs Rob & Sinéad', meta: 'Sun 23 Aug · Court 3', scoreline: '6-4 3-6 7-5', duration: '52 min', court: 'Court 3 · Padel Ireland', sets: [['SET 1', '6-4'], ['SET 2', '3-6'], ['SET 3', '7-5']], seed: 7 },
+  { won: false, opponents: 'vs Dave & Niamh', meta: 'Thu 20 Aug · Court 1', scoreline: '4-6 6-7', duration: '48 min', court: 'Court 1 · Padel Ireland', sets: [['SET 1', '4-6'], ['SET 2', '6-7']], seed: 3 },
+  { won: true, opponents: 'vs Eoin & Katie', meta: 'Tue 18 Aug · Court 3', scoreline: '6-2 6-3', duration: '41 min', court: 'Court 3 · Padel Ireland', sets: [['SET 1', '6-2'], ['SET 2', '6-3']], seed: 11 },
+  { won: true, opponents: 'vs Rob & Dave', meta: 'Sat 15 Aug · Court 2', scoreline: '7-6 6-4', duration: '58 min', court: 'Court 2 · Tramore', sets: [['SET 1', '7-6'], ['SET 2', '6-4']], seed: 5 }
+];
+
+function fakeTimeline(seed, n, aBias) {
+  const out = []; let x = seed;
+  for (let i = 0; i < n; i++) { x = (x * 1103515245 + 12345) % 2147483648; out.push((x / 2147483648) < aBias ? 0 : 1); }
+  return out;
+}
+
+class Component extends DCLogic {
+  state = {
+    screen: 'home', spectator: false, openMatch: null,
+    a: ['Cian', 'Aoife'], b: ['Rob', 'Sinéad'],
+    golden: true, bestOf: 3, court: 'Court 3 · Padel Ireland',
+    match: null, undoStack: [], played: [],
+    v2a: { screen: 'setup', match: null, undo: [] },
+    v2b: { screen: 'setup', match: null, undo: [] },
+    mB: newMatch({ a: ['Cian', 'Aoife'], b: ['Rob', 'Sinéad'] }),
+    mC: newMatch({ a: ['Cian', 'Aoife'], b: ['Rob', 'Sinéad'] }),
+    undoB: [], undoC: [], tick: 0
+  };
+
+  componentDidMount() {
+    const p = this.props || {};
+    if (p.goldenPoint !== undefined) this.setState({ golden: !!p.goldenPoint });
+    if (p.bestOf) this.setState({ bestOf: Number(p.bestOf) });
+    this._i = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 1000);
+    const seedB = [0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0];
+    let mB = this.state.mB, mC = this.state.mC;
+    seedB.forEach(t => { mB = score(mB, t); });
+    [0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0].forEach(t => { mC = score(mC, t); });
+    mB.startedAt = Date.now() - 34 * 60000; mC.startedAt = Date.now() - 27 * 60000;
+    this.setState({ mB, mC });
+  }
+  componentWillUnmount() { clearInterval(this._i); }
+
+  vh(key) {
+    const st = this.state, v = st[key];
+    const mk = () => newMatch({ a: st.a, b: st.b, golden: st.golden, bestOf: st.bestOf, court: st.court });
+    const m = v.match || mk();
+    const live = this.liveOf(m);
+    const sit = situation(m);
+    const set = patch => this.setState(s => ({ [key]: Object.assign({}, s[key], patch) }));
+    const tap = t => () => this.setState(s => {
+      const c = s[key]; if (!c.match || c.match.over) return {};
+      const nx = score(c.match, t);
+      if (nx.over) setTimeout(() => set({ screen: 'recap' }), 1000);
+      return { [key]: { screen: c.screen, match: nx, undo: c.undo.concat([JSON.stringify(c.match)]) } };
+    });
+    live.hypeText = sit ? sit.text : '';
+    live.hypeA = !!sit && sit.t === 0;
+    live.hypeB = !!sit && sit.t === 1;
+    live.hypeN = !!sit && sit.t === null;
+    live.noHype = !sit;
+    live.hypeKey = key + m.total;
+    live.hypeOwner = sit && sit.t !== null ? (sit.t === 0 ? live.a.name : live.b.name) : 'BOTH TEAMS';
+    live.canUndo = v.undo.length > 0;
+    live.aBg = live.hypeA ? '#263A16' : '#16221D';
+    live.bBg = live.hypeB ? '#3E2113' : '#221A16';
+    live.aNum = live.hypeA ? '#D6FF4B' : '#F1F5F2';
+    live.bNum = live.hypeB ? '#FF6B3D' : '#F1F5F2';
+    live.tickerBg = live.hypeA ? '#D6FF4B' : live.hypeB ? '#FF6B3D' : '#141E19';
+    live.tickerFg = live.noHype ? '#5F6E66' : '#0A100E';
+    live.tickerText = sit ? sit.text : 'TAP A SIDE TO SCORE';
+    const streak = (() => { const t = m.timeline; if (!t.length) return 0; let n = 1; for (let i = t.length - 1; i > 0; i--) { if (t[i] === t[i - 1]) n++; else break; } return n; })();
+    return {
+      isSetup: v.screen === 'setup', isLive: v.screen === 'live', isRecap: v.screen === 'recap',
+      live,
+      recap: {
+        headline: m.winner === null ? 'NO RESULT' : m.winner === 0 ? 'WINNERS' : 'WINNERS',
+        winner: m.winner === null ? 'Match abandoned' : (m.winner === 0 ? st.a.join(' & ') : st.b.join(' & ')),
+        scoreline: m.sets.map(x => x.a + '-' + x.b).join('  ') || (m.games[0] + '-' + m.games[1] + '*'),
+        duration: fmtTime((m.finishedAt || Date.now()) - m.startedAt),
+        points: m.total, streakLine: streak + '-point run to close',
+        hasMvp: m.winner !== null, mvp: m.winner === 0 ? st.a[0] : st.b[0],
+        timeline: m.timeline.map(t => ({ isA: t === 0, isB: t === 1 }))
+      },
+      start: () => set({ screen: 'live', match: mk(), undo: [] }),
+      back: () => set({ screen: 'setup' }),
+      end: () => set({ screen: 'recap' }),
+      again: () => set({ screen: 'setup', match: null, undo: [] }),
+      tapA: tap(0), tapB: tap(1),
+      undo: () => this.setState(s => { const c = s[key]; const u = c.undo.slice(); const p = u.pop(); return p ? { [key]: { screen: c.screen, match: JSON.parse(p), undo: u } } : {}; })
+    };
+  }
+
+  finish() {
+    this.setState(st => {
+      const m = st.match;
+      if (!m || m.logged) return { screen: 'recap' };
+      const nm = clone(m); nm.logged = true; nm.finishedAt = m.finishedAt || Date.now();
+      const won = nm.winner === null ? null : nm.winner === 0;
+      const sets = nm.sets.map((x, i) => ['SET ' + (i + 1), x.a + '-' + x.b]);
+      if (nm.winner === null && (nm.games[0] || nm.games[1])) sets.push(['UNFINISHED', nm.games[0] + '-' + nm.games[1]]);
+      return {
+        screen: 'recap', match: nm,
+        played: [{
+          won: won === true, lost: won === false, abandoned: won === null,
+          opponents: 'vs ' + st.b.join(' & '),
+          meta: 'Today · ' + (nm.court.split(' · ')[0] || nm.court) + (won === null ? ' · abandoned' : ''),
+          scoreline: (nm.sets.map(x => x.a + '-' + x.b).join(' ') || (nm.games[0] + '-' + nm.games[1] + '*')),
+          duration: fmtTime(nm.finishedAt - nm.startedAt).replace(':', 'm ') + 's',
+          court: nm.court, sets,
+          realTimeline: nm.timeline.slice()
+        }].concat(st.played)
+      };
+    });
+  }
+
+  liveOf(m) {
+    const sit = situation(m);
+    const setsLabel = t => 'SETS ' + m.setsWon[t];
+    const mk = t => ({
+      name: t === 0 ? this.state.a.map(n => n).join(' & ').toUpperCase() : this.state.b.join(' & ').toUpperCase(),
+      players: t === 0 ? this.state.a.join(' · ') : this.state.b.join(' · '),
+      score: label(m, t), games: m.games[t], setsLabel: setsLabel(t),
+      serving: m.serving === t, key: 'k' + t + '-' + m.total,
+      gamePips: pips(m.games[t]), emptyPips: pips(6 - m.games[t]),
+      setCells: [0, 1, 2].map(i => ({ v: m.sets[i] ? (t === 0 ? m.sets[i].a : m.sets[i].b) : (i === m.sets.length ? m.games[t] : '–') }))
+    });
+    return {
+      a: mk(0), b: mk(1), court: m.court, timer: fmtTime((m.finishedAt || Date.now()) - m.startedAt),
+      formatLabel: (m.bestOf === 1 ? 'SINGLE SET' : 'BEST OF 3') + (m.golden ? ' · GOLDEN POINT' : ' · ADVANTAGE'),
+      isTiebreak: m.tiebreak,
+      setChips: m.sets.map((s, i) => ({ label: 'S' + (i + 1) + ' ' + s.a + '-' + s.b })),
+      currentLabel: m.games[0] + '-' + m.games[1],
+      bannerText: sit ? sit.text : '', bannerA: !!sit && sit.t === 0, bannerB: !!sit && sit.t === 1,
+      noBanner: !sit || sit.t === null && false, canUndo: true,
+      timeline: m.timeline.slice(-26).map(t => ({ isA: t === 0, isB: t === 1 })),
+      glanceHint: 'TAP HERE TO EXIT GLANCE MODE'
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const m = s.match || newMatch({ a: s.a, b: s.b, golden: s.golden, bestOf: s.bestOf, court: s.court });
+    const live = this.liveOf(m);
+    const sit = situation(m);
+    const hype = this.props.hypeCopy !== false;
+    if (!hype && sit) {
+      const plain = { 'MATCH POINT': 'MATCH BALL', 'SET POINT': 'SET BALL', 'GAME POINT': 'GAME BALL', '4 IN A ROW': '', 'TIEBREAK — TIGHT': 'TIEBREAK' };
+      live.bannerText = plain[sit.text] !== undefined ? plain[sit.text] : sit.text;
+      if (!live.bannerText) { live.bannerA = false; live.bannerB = false; }
+    }
+    live.bannerN = !!live.bannerText && !live.bannerA && !live.bannerB;
+    live.noBanner = !live.bannerText;
+    live.canUndo = s.undoStack.length > 0;
+
+    const tap = t => () => this.setState(st => {
+      if (!st.match) return {};
+      const nx = score(st.match, t);
+      if (nx.over) setTimeout(() => this.finish(), 900);
+      return { match: nx, undoStack: st.undoStack.concat([JSON.stringify(st.match)]) };
+    });
+
+    const lb = this.liveOf(s.mB), lc = this.liveOf(s.mC);
+    const sitB = situation(s.mB), sitC = situation(s.mC);
+    lb.headline = sitB ? sitB.text : (s.mB.tiebreak ? 'TIEBREAK' : 'SET ' + (s.mB.sets.length + 1) + ', GAME ' + (s.mB.games[0] + s.mB.games[1] + 1));
+    lb.sub = s.mB.a.players + '  vs  ' + s.mB.b.players + ' · ' + (s.mB.sets.length ? s.mB.sets.map(x => x.a + '-' + x.b).join('  ') : 'first set');
+    lb.serveCount = (s.mB.serving === 0 ? 'A' : 'B');
+    lb.momentum = (() => { const last = s.mB.timeline.slice(-5); const a = last.filter(x => x === 0).length; return a >= 4 ? 'TEAM A SURGING' : a <= 1 ? 'TEAM B SURGING' : 'EVEN'; })();
+    lb.timeline = s.mB.timeline.slice(-18).map(t => ({ isA: t === 0, isB: t === 1 }));
+
+    lc.state = sitC ? sitC.text : 'GAME ' + (s.mC.games[0] + s.mC.games[1] + 1) + ' · SET ' + (s.mC.sets.length + 1);
+    lc.big = s.mC.points[0] === s.mC.points[1] ? label(s.mC, 0) + '·' + label(s.mC, 1) : label(s.mC, 0) + '–' + label(s.mC, 1);
+    lc.bigKey = 'c' + s.mC.total;
+    lc.caption = sitC ? (sitC.t === 0 ? s.mC.a.players + ' can take it here' : sitC.t === 1 ? s.mC.b.players + ' can take it here' : 'Next point decides the game') : 'Tap a team row to award the point';
+    lc.timeline = s.mC.timeline.slice(-20).map(t => ({ isA: t === 0, isB: t === 1 }));
+
+    const recapWinner = m.winner === 0 ? s.a.join(' & ') : s.b.join(' & ');
+    const lead = m.setsWon[0] - m.setsWon[1] || m.games[0] - m.games[1] || m.points[0] - m.points[1];
+    const leaderLabel = lead === 0 ? 'All level at the whistle' : (lead > 0 ? s.a.join(' & ') : s.b.join(' & ')) + ' were ahead';
+    const streak = (() => { const t = m.timeline; let n = 0; for (let i = t.length - 1; i > 0; i--) { if (t[i] === t[i - 1]) n++; else break; } return n + 1; })();
+
+    return {
+      isHome: s.screen === 'home', isSetup: s.screen === 'setup',
+      isLive: s.screen === 'live' && !s.spectator,
+      isGlance: s.screen === 'live' && s.spectator,
+      isRecap: s.screen === 'recap', isHistory: s.screen === 'history',
+      chromeOn: !s.spectator,
+      live, liveB: lb, liveC: lc,
+      v2a: this.vh('v2a'), v2b: this.vh('v2b'),
+      isBo3: s.bestOf === 3, isBo1: s.bestOf === 1,
+      goldenOn: s.golden, goldenOff: !s.golden,
+      ladder: [
+        { rank: 1, name: 'Cian', record: '6-2', hot: true },
+        { rank: 2, name: 'Rob', record: '5-3', hot: false },
+        { rank: 3, name: 'Aoife', record: '4-4', hot: false },
+        { rank: 4, name: 'Sinéad', record: '2-6', hot: false }
+      ],
+      history: s.played.concat(HISTORY).map((h, i) => ({
+        won: !!h.won, lost: !h.won && !h.abandoned, abandoned: !!h.abandoned, opponents: h.opponents, meta: h.meta, scoreline: h.scoreline,
+        duration: h.duration, court: h.court,
+        sets: h.sets.map(x => ({ label: x[0], score: x[1] })),
+        timeline: (h.realTimeline || fakeTimeline(h.seed, 46, h.won ? 0.58 : 0.44)).map(t => ({ isA: t === 0, isB: t === 1 })),
+        open: s.openMatch === i,
+        toggle: () => this.setState(st => ({ openMatch: st.openMatch === i ? null : i }))
+      })),
+      recap: {
+        headline: m.winner === null ? 'MATCH ABANDONED' : m.winner === 0 ? 'YOUR TEAM TAKES IT' : 'THEY TOOK IT',
+        winner: m.winner === null ? (m.total === 0 ? 'No points played' : leaderLabel) : recapWinner,
+        scoreline: m.winner === null
+          ? (m.sets.map(x => x.a + '-' + x.b).concat([m.games[0] + '-' + m.games[1] + '*']).join('  '))
+          : (m.sets.map(x => x.a + '-' + x.b).join('  ') || '—'),
+        duration: fmtTime((m.finishedAt || Date.now()) - m.startedAt),
+        points: m.total,
+        hasMvp: m.winner !== null,
+        mvp: m.winner === 0 ? s.a[0] : s.b[0],
+        mvpLine: 'Closed out with a ' + streak + '-point run',
+        timeline: m.timeline.map(t => ({ isA: t === 0, isB: t === 1 }))
+      },
+      goHome: () => this.setState({ screen: 'home', spectator: false }),
+      goSetup: () => this.setState({ screen: 'setup' }),
+      goHistory: () => this.setState({ screen: 'history' }),
+      startMatch: () => this.setState({ screen: 'live', spectator: false, undoStack: [], match: newMatch({ a: this.state.a, b: this.state.b, golden: this.state.golden, bestOf: this.state.bestOf, court: this.state.court }) }),
+      rematch: () => this.setState({ screen: 'live', undoStack: [], match: newMatch({ a: this.state.a, b: this.state.b, golden: this.state.golden, bestOf: this.state.bestOf, court: this.state.court }) }),
+      endMatch: () => this.finish(),
+      toggleSpectator: () => this.setState(st => ({ spectator: !st.spectator })),
+      tapA: tap(0), tapB: tap(1),
+      undo: () => this.setState(st => { const u = st.undoStack.slice(); const prev = u.pop(); return prev ? { match: JSON.parse(prev), undoStack: u } : {}; }),
+      setA1: e => { const v = e.target.value; this.setState(st => ({ a: [v, st.a[1]] })); },
+      setA2: e => { const v = e.target.value; this.setState(st => ({ a: [st.a[0], v] })); },
+      setB1: e => { const v = e.target.value; this.setState(st => ({ b: [v, st.b[1]] })); },
+      setB2: e => { const v = e.target.value; this.setState(st => ({ b: [st.b[0], v] })); },
+      setCourt: e => this.setState({ court: e.target.value }),
+      setBo1: () => this.setState({ bestOf: 1 }), setBo3: () => this.setState({ bestOf: 3 }),
+      toggleGolden: () => this.setState(st => ({ golden: !st.golden })),
+      tapB1: () => this.setState(st => ({ mB: score(st.mB, 0), undoB: st.undoB.concat([JSON.stringify(st.mB)]) })),
+      tapB2: () => this.setState(st => ({ mB: score(st.mB, 1), undoB: st.undoB.concat([JSON.stringify(st.mB)]) })),
+      undoB: () => this.setState(st => { const u = st.undoB.slice(); const p = u.pop(); return p ? { mB: JSON.parse(p), undoB: u } : {}; }),
+      resetB: () => this.setState({ mB: newMatch({ a: this.state.a, b: this.state.b }), undoB: [] }),
+      tapC1: () => this.setState(st => ({ mC: score(st.mC, 0), undoC: st.undoC.concat([JSON.stringify(st.mC)]) })),
+      tapC2: () => this.setState(st => ({ mC: score(st.mC, 1), undoC: st.undoC.concat([JSON.stringify(st.mC)]) })),
+      undoC: () => this.setState(st => { const u = st.undoC.slice(); const p = u.pop(); return p ? { mC: JSON.parse(p), undoC: u } : {}; }),
+      resetC: () => this.setState({ mC: newMatch({ a: this.state.a, b: this.state.b }), undoC: [] })
+    };
+  }
+}
+</script>
+</body>
+</html>

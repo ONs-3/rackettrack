@@ -1,21 +1,8 @@
 # RacketTrack — instructions for Claude Code
 
 Padel score tracker. React Native (Expo) for **Android**, Supabase backend, TypeScript strict
-throughout. The design spec lives in `docs/design-handoff/`; read
-`README.md` there before making visual changes. iOS is explicitly out of scope — do not add platform
-branches for it.
-
-## Current state
-
-Phases 0–3 of `07-build-plan.md` are built and working fully offline: scoring engine, live scoreboard,
-new match, recap, home + ladder, history. No Supabase project exists yet, so auth/squads/sync/push
-(phases 4–6) are not built. See this project's own `README.md` for the exact status and the two
-deviations from the handoff (`react-native-mmkv` v4's API, the Archivo Expanded font source).
-
-**Guest mode is real, not a placeholder.** Every match scores into local-only state
-(`squadId: null`) with no sign-in gate — this was the handoff's own recommendation
-(`06-offline-sync-and-push.md`, "Guest mode"), approved before it was built. Don't add a sign-in
-requirement in front of scoring without checking that's still wanted.
+throughout. The design spec lives in `docs/handoff/`; read `README.md` there before making visual
+changes. iOS is explicitly out of scope — do not add platform branches for it.
 
 ## Non-negotiables
 
@@ -34,14 +21,12 @@ how a user reads the score from across a court.
 **Import colours, sizes, and type from `src/theme/tokens.ts`.** A hex literal or a magic font size in
 a component is a bug. If a value is missing from tokens, add it there first.
 
-**No network call on the critical path of a user action.** Reads come from local state (the MMKV
-archive today; TanStack Query cache once phase 4 lands); writes go through `src/lib/outbox.ts`. The
-app must work fully in airplane mode. If you find yourself writing `await supabase…` inside a press
-handler, you are on the wrong path.
+**No network call on the critical path of a user action.** Reads come from the TanStack Query cache;
+writes go through `src/lib/outbox.ts`. The app must work fully in airplane mode. If you find yourself
+writing `await supabase…` inside a press handler, you are on the wrong path.
 
 **Hardware back is never a silent destructive action.** On the live match screen it opens a confirm
-sheet (already implemented — see the `BackHandler` effect in `app/match/live.tsx`). Losing a match in
-progress to a back swipe is the worst bug this app can have.
+sheet. Losing a match in progress to a back swipe is the worst bug this app can have.
 
 ## Conventions
 
@@ -49,15 +34,15 @@ progress to a back swipe is the worst bug this app can have.
 - Business logic lives in `src/features/<domain>/`. Shared UI in `src/components/`.
 - Path alias is `@/` → `src/`.
 - Styles use `StyleSheet.create` with token imports. No inline style objects except animated ones.
-- Animations use Reanimated 3+ only (`react-native-reanimated`, currently v4). `Animated` from
-  `react-native` runs on the JS thread and drops frames during scoring.
+- Animations use Reanimated 3 only. `Animated` from `react-native` runs on the JS thread and drops
+  frames during scoring.
 - Every numeric display sets `fontVariant: ['tabular-nums']` — and if Android ignores it for a given
   font, use the fixed-width digit cells in `05-design-tokens.md`.
 - Ripple (`android_ripple`) on list rows and buttons; **opacity only** on the two team zones.
 - One solid button per screen, at the bottom. Secondary actions are nav-bar text.
 - Bottom spacing is `insets.bottom + 36`, never a bare 36 — three-button navigation devices need both.
-- After a schema change (phase 4+): `npx supabase gen types typescript --project-id <id> >
-  src/types/database.ts` and commit the result. Until then that file is a hand-written placeholder.
+- After a schema change: `npx supabase gen types typescript --project-id <id> > src/types/database.ts`
+  and commit the result.
 
 ## Commands
 
@@ -65,7 +50,7 @@ progress to a back swipe is the worst bug this app can have.
 npx expo start --dev-client    # dev server (Expo Go will NOT work — native modules)
 npx expo run:android           # compile locally and install on a connected device
 npm test                       # Jest
-npm run typecheck              # tsc --noEmit
+npx tsc --noEmit               # typecheck
 eas build --profile development --platform android
 eas build --profile preview --platform android   # shareable APK for testers
 ```
@@ -74,27 +59,23 @@ eas build --profile preview --platform android   # shareable APK for testers
 
 - **MMKV instead of SQLite.** Data volume is tiny. Revisit only above ~5 MB of local archive.
 - **No realtime in v1.** One phone scores; the match syncs when it ends. Live spectating is v2.
-- **Auth will be Google Sign-In + email magic link** once phase 4 is built. All providers go through
-  one `signIn(provider)` function — keep it that way. `webClientId` is the **web** OAuth client ID,
-  not the Android one.
-- **Push is in scope for phase 6** — free via Firebase Cloud Messaging. Needs the `results`
-  notification channel and an Android 13+ runtime permission request, made after the first completed
-  match.
+- **Auth is Google Sign-In + email magic link.** All providers go through one `signIn(provider)`
+  function — keep it that way. `webClientId` is the **web** OAuth client ID, not the Android one.
+- **Push is in scope** — free via Firebase Cloud Messaging. Needs the `results` notification channel
+  and an Android 13+ runtime permission request, made after the first completed match.
 - **Nothing runs in the background.** Sync drains on foreground only. OEM battery optimisation makes
   background work unreliable on exactly the devices we cannot test — do not add a background task.
-- **`android.package` is permanent** (`com.rackettrack.app`). Never change it.
-- **Points stored as one row each** once synced. ~60 rows a match buys SQL-queryable momentum stats
-  later.
-- **Roster players are rows, not users.** `src/features/squad/localRoster.ts` is the guest-mode
-  stand-in for `squad_players` — `resolvePlayer()` always resolves-or-creates, never writes a raw
-  name string into a match. Once squads exist, this becomes the offline fallback.
-- **Abandoned matches have no winner.** Don't let the UI invent one.
+- **`android.package` is permanent.** Never change it.
+- **Points stored as one row each.** ~60 rows a match buys SQL-queryable momentum stats later.
+- **Roster players are rows, not users.** `squad_players.claimed_by` is how they become accounts
+  later. Never write a raw name string into a match.
+- **Abandoned matches have no winner.** The DB constraint enforces it. Do not let the UI invent one.
 - **Sport chips for badminton and tennis are non-functional.** Padel is hard-coded in v1 behind the
   `RuleSet` interface.
 
 ## Before you finish any task
 
-1. `npm run typecheck` clean.
+1. `npx tsc --noEmit` clean.
 2. `npm test` green.
 3. If you touched the live screen, describe how you verified rapid taps do not drop points, and that
    hardware back still prompts rather than discards.
